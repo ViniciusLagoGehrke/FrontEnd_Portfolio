@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia:{
-    paddingTop: '56.25%' //16:9
+    height: '140px',
+    paddingTop: '56.25%', //16:9
   },
   cardContent:{
     flexGrow: 'initial',
@@ -58,6 +59,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const cards = [
+  {
+    "title": "Article Preview Component",
+    "description": "Exercise using JS EventListener and DOM handling, SVG inline to change properties, and responsive layout",
+    "link": "https://article-preview-component-zeta.vercel.app/",
+    "code": "https://github.com/ViniciusLagoGehrke/ArticlePreviewComponent",
+    "image": "src/pages/Home/article-preview-component.png"
+  },
+  {
+    "title": "Four Card Feature Section",
+    "description": "Practiced multiple box-shadows including a inset shadow that is 'trimmed' by the container's rounded border.",
+    "link": "https://four-card-feature-section-git-master.viniciuslagogehrke.vercel.app/",
+    "code": "https://github.com/ViniciusLagoGehrke/Four-card-feature-section",
+    "image": "src/pages/Home/four-card-feature-section.png"
+  },
+  {
+    "title": "Landing Page with Single Intro",
+    "description": "Background-image setup, responsive layout with flex and a few hover effects on buttons.",
+    "link": "https://landing-page-with-single-intro.vercel.app/",
+    "code": "https://github.com/ViniciusLagoGehrke/landing-page-with-single-intro",
+    "image": "../../assets/img/landing-page-with-single-intro.png"
+  },
+  {
+    "title": "Single Price Grid Component Master",
+    "description": "On my first exercise I praticed with CSS selectors, variable color in CSS, transform-translate property and more.",
+    "link": "https://single-price-grid-component-master-virid-eta.vercel.app/",
+    "code": "https://github.com/ViniciusLagoGehrke/Single-Price-Grid-Component-Master",
+    "image": "../../assets/img/single-price-grid-component.png"
+  }
+];
+
 export default function Home() {
   const classes = useStyles();
 
@@ -66,8 +98,8 @@ export default function Home() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <Typography variant="h6" color="inherit" nowrap>
-            Album layout
+          <Typography variant="h6" color="inherit" noWrap>
+            FRONT END MENTOR PORTFOLIO
           </Typography>
         </Toolbar>
       </AppBar>
@@ -79,9 +111,7 @@ export default function Home() {
               Album layout
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              Here are some exercises where I practiced my skills in HTML, CSS and also JS in addition to accessibility and responsiveness. I learned in practice details about layout, positioning, animations, eventListener, DOM manipulation.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -102,198 +132,33 @@ export default function Home() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-              <Grid item xs={12} sm={6} md={4}>
-
+            {cards.map((card, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image={card.image}
+                    title={card.title}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.title}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {card.description}
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      View
+                      Visit
                     </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
                     <Button size="small" color="primary">
-                      View
+                      Check Code
                     </Button>
                   </CardActions>
                 </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-
               </Grid>
+            ))}
           </Grid>
         </Container>
       </main>
