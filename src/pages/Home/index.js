@@ -108,25 +108,11 @@ export default function Home() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              FRONT END MENTOR PORTFOLIO
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Here are some exercises where I practiced my skills in HTML, CSS and also JS in addition to accessibility and responsiveness. I learned in practice details about layout, positioning, animations, eventListener, DOM manipulation.
+              Here are some exercises where I practiced my skills in HTML, CSS and also JS in addition to accessibility and responsiveness. I learned in practice details about layout, positioning, animations, eventListener and DOM manipulation.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -149,10 +135,10 @@ export default function Home() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" href={card.link}>
                       Visit
                     </Button>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" href={card.code}>
                       Check Code
                     </Button>
                   </CardActions>
@@ -164,11 +150,8 @@ export default function Home() {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+          Coded with love!
         </Typography>
         <Copyright />
       </footer>
