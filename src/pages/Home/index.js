@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia:{
-    height: '140px',
+    height: '0',
     paddingTop: '56.25%', //16:9
   },
   cardContent:{
@@ -65,28 +65,28 @@ const cards = [
     "description": "Exercise using JS EventListener and DOM handling, SVG inline to change properties, and responsive layout",
     "link": "https://article-preview-component-zeta.vercel.app/",
     "code": "https://github.com/ViniciusLagoGehrke/ArticlePreviewComponent",
-    "image": "src/pages/Home/article-preview-component.png"
+    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/ArticlePreviewComponent/master/design/desktop-design.jpg"
   },
   {
     "title": "Four Card Feature Section",
     "description": "Practiced multiple box-shadows including a inset shadow that is 'trimmed' by the container's rounded border.",
     "link": "https://four-card-feature-section-git-master.viniciuslagogehrke.vercel.app/",
     "code": "https://github.com/ViniciusLagoGehrke/Four-card-feature-section",
-    "image": "src/pages/Home/four-card-feature-section.png"
+    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/Four-card-feature-section/master/design/desktop-design.jpg"
   },
   {
     "title": "Landing Page with Single Intro",
-    "description": "Background-image setup, responsive layout with flex and a few hover effects on buttons.",
+    "description": "Background-image setup, responsive layout with flexbox and a few hover effects on some buttons.",
     "link": "https://landing-page-with-single-intro.vercel.app/",
     "code": "https://github.com/ViniciusLagoGehrke/landing-page-with-single-intro",
-    "image": "../../assets/img/landing-page-with-single-intro.png"
+    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/landing-page-with-single-intro/master/desktopView.png"
   },
   {
     "title": "Single Price Grid Component Master",
     "description": "On my first exercise I praticed with CSS selectors, variable color in CSS, transform-translate property and more.",
     "link": "https://single-price-grid-component-master-virid-eta.vercel.app/",
     "code": "https://github.com/ViniciusLagoGehrke/Single-Price-Grid-Component-Master",
-    "image": "../../assets/img/single-price-grid-component.png"
+    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/Single-Price-Grid-Component-Master/master/desktop.png"
   }
 ];
 
@@ -111,7 +111,7 @@ export default function Home() {
               FRONT END MENTOR PORTFOLIO
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Here are some exercises where I practiced my skills in HTML, CSS and also JS in addition to accessibility and responsiveness. I learned in practice details about layout, positioning, animations, eventListener and DOM manipulation.
+              This website is a showcase exercises where I practiced my skills in HTML, CSS and also JS. The page itself was done with React, Material UI and Github API.
             </Typography>
           </Container>
         </div>
