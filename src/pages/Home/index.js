@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    }
   },
   cardMedia:{
     height: '0',
@@ -113,6 +116,20 @@ export default function Home() {
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               This website is a showcase exercises where I practiced my skills in HTML, CSS and also JS. The page itself was done with React, Material UI and Github API.
             </Typography>
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify="center">
+                <Grid item>
+                  <Button variant="contained" color="primary">
+                    Main call to action
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" color="primary">
+                    Secondary action
+                  </Button>
+                </Grid>
+              </Grid>
+            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
