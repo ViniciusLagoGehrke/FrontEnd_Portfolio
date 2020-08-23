@@ -45,8 +45,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    transition: 'scale 0.4s ease-out',
     '&:hover': {
-      transform: 'scale(1.1)',
+      transform: 'scale(1.05)',
     }
   },
   cardMedia:{
@@ -93,6 +94,14 @@ const cards = [
   }
 ];
 
+async function getRepos (){
+  const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
+  const response = await fetch(url)
+  const result = await response.json()
+
+  console.log(result)
+}
+
 export default function Home() {
   const classes = useStyles();
 
@@ -119,8 +128,8 @@ export default function Home() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
+                  <Button variant="contained" color="primary" onClick={getRepos}>
+                    List Repositories
                   </Button>
                 </Grid>
                 <Grid item>
