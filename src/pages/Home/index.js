@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import getRepos from '../../API';
+import RepoList from '../../components/RepoList';
 
 function Copyright() {
   return (
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    transition: 'scale 0.4s ease-out',
+    transition: '0.4s ease-out',
     '&:hover': {
       transform: 'scale(1.05)',
     }
@@ -94,14 +96,6 @@ const cards = [
   }
 ];
 
-async function getRepos (){
-  const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
-  const response = await fetch(url)
-  const result = await response.json()
-
-  console.log(result)
-}
-
 export default function Home() {
   const classes = useStyles();
 
@@ -139,6 +133,7 @@ export default function Home() {
                 </Grid>
               </Grid>
             </div>
+            <RepoList />
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
