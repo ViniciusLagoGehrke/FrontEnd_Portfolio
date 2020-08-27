@@ -7,13 +7,14 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import getRepos from '../../API';
-import RepoList from '../../components/RepoList';
+import RepoList from '../../API';
+//import RepoList from '../../components/RepoList';
 
 function Copyright() {
   return (
@@ -28,7 +29,6 @@ function Copyright() {
   );
 }
 
-
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -39,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
   },
   heroButtons:{
     marginTop: theme.spacing(4),
+  },
+  repoList:{
+    marginTop: 30,
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
   },
   cardGrid:{
     paddingTop: theme.spacing(8),
@@ -97,6 +103,19 @@ const cards = [
   }
 ];
 
+const handleSearch = (e) => {
+  setUserInput(e.target.value)
+}
+
+const handleDisplay = () => {
+  const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
+  fetch(url)
+    .then(res => res.json())
+    .then(data=> {
+      setData(data);
+  });
+};
+
 export default function Home() {
   const classes = useStyles();
 
@@ -123,7 +142,7 @@ export default function Home() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" onClick={getRepos}>
+                  <Button variant="contained" color="primary" onClick={handleSearch}>
                     List Repositories
                   </Button>
                 </Grid>
@@ -134,7 +153,14 @@ export default function Home() {
                 </Grid>
               </Grid>
             </div>
-            <RepoList />
+            <Grid>
+              <Typography component="h3" variant="h3" align="center" color="textPrimary">
+                repositoriesList
+              </Typography>
+              <List component="nav" aria-label="FEM repositories">
+                {handleDisplay}           
+              </List>
+            </Grid>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
