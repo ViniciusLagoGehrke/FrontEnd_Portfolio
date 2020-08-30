@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import RepoList from '../../API';
+//import RepoList from '../../API';
 //import RepoList from '../../components/RepoList';
 
 function Copyright() {
@@ -103,21 +103,35 @@ const cards = [
   }
 ];
 
-const handleSearch = (e) => {
-  setUserInput(e.target.value)
-}
-
-const handleDisplay = () => {
-  const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
-  fetch(url)
-    .then(res => res.json())
-    .then(data=> {
-      setData(data);
-  });
-};
-
 export default function Home() {
   const classes = useStyles();
+
+  const [name, setName] = useState('');
+  const [content, setContent] = useState('');
+  const [url, setUrl] = useState('');
+  const [login, setLogin] = useState('');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
+    fetch(url)
+      .then(res => res.json())
+      .then(data=> {
+        setData(data);
+      });
+  }, []);
+
+  const setData = ({
+    name,
+    contents_url,
+    html_url,
+    owner
+  }) => {
+    setName(name);
+    setContent(contents_url);
+    setUrl(html_url);
+    setLogin(owner);
+  };
 
   return(
     <React.Fragment>
@@ -137,12 +151,12 @@ export default function Home() {
               FRONT END MENTOR PORTFOLIO
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              This website is a showcase exercises where I practiced my skills in HTML, CSS and also JS. The page itself was done with React, Material UI and Github API.
+              This website is a showcase exercises where I practiced my skills in HTML, CSS and also JS. The page itself was done using React, Material UI and the Github API.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" onClick={handleSearch}>
+                  <Button variant="contained" color="primary" >
                     List Repositories
                   </Button>
                 </Grid>
@@ -155,10 +169,10 @@ export default function Home() {
             </div>
             <Grid>
               <Typography component="h3" variant="h3" align="center" color="textPrimary">
-                repositoriesList
+                List Repositories
               </Typography>
               <List component="nav" aria-label="FEM repositories">
-                {handleDisplay}           
+                {name}           
               </List>
             </Grid>
           </Container>

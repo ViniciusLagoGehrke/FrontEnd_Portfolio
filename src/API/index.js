@@ -28,6 +28,19 @@ function RepoList (){
     setLogin(owner);
   };
 
+const handleSearch = (e) => {
+  setUserInput(e.target.value)
+}
+
+const handleDisplay = () => {
+  const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
+  fetch(url)
+    .then(res => res.json())
+    .then(data=> {
+      setData(data);
+  });
+};
+
   return
     
   ;
