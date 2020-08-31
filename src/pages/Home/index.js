@@ -172,7 +172,10 @@ export default function Home() {
                 List Repositories
               </Typography>
               <List component="nav" aria-label="FEM repositories">
-                {name}           
+                {name}
+                {content}
+                {url}
+                {login}                
               </List>
             </Grid>
           </Container>
