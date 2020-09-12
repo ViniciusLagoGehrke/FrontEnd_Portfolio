@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import dadosIniciais from '../../data/initial_data.json'; 
 //import RepoList from '../../API';
 //import RepoList from '../../components/RepoList';
 
@@ -72,36 +73,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [
-  {
-    "title": "Article Preview Component",
-    "description": "Exercise using JS EventListener and DOM handling, SVG inline to change properties, and responsive layout",
-    "link": "https://article-preview-component-zeta.vercel.app/",
-    "code": "https://github.com/ViniciusLagoGehrke/ArticlePreviewComponent",
-    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/ArticlePreviewComponent/master/design/desktop-design.jpg"
-  },
-  {
-    "title": "Four Card Feature Section",
-    "description": "Practiced multiple box-shadows including a inset shadow that is 'trimmed' by the container's rounded border.",
-    "link": "https://four-card-feature-section-git-master.viniciuslagogehrke.vercel.app/",
-    "code": "https://github.com/ViniciusLagoGehrke/Four-card-feature-section",
-    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/Four-card-feature-section/master/design/desktop-design.jpg"
-  },
-  {
-    "title": "Landing Page with Single Intro",
-    "description": "Background-image setup, responsive layout with flexbox and a few hover effects on some buttons.",
-    "link": "https://landing-page-with-single-intro.vercel.app/",
-    "code": "https://github.com/ViniciusLagoGehrke/landing-page-with-single-intro",
-    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/landing-page-with-single-intro/master/desktopView.png"
-  },
-  {
-    "title": "Single Price Grid Component Master",
-    "description": "On my first exercise I praticed with CSS selectors, variable color in CSS, transform-translate property and more.",
-    "link": "https://single-price-grid-component-master-virid-eta.vercel.app/",
-    "code": "https://github.com/ViniciusLagoGehrke/Single-Price-Grid-Component-Master",
-    "image": "https://raw.githubusercontent.com/ViniciusLagoGehrke/Single-Price-Grid-Component-Master/master/desktop.png"
-  }
-];
+const cards = dadosIniciais;
+
+console.log(cards);
 
 export default function Home() {
   const classes = useStyles();
@@ -110,7 +84,7 @@ export default function Home() {
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
   const [login, setLogin] = useState('');
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
   useEffect(() => {
     const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
@@ -183,7 +157,7 @@ export default function Home() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card, index) => (
+            {cards.projects.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
