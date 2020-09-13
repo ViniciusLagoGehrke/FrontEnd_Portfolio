@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import Avatar from '@material-ui/core/Avatar';
 import dadosIniciais from '../../data/initial_data.json'; 
 //import RepoList from '../../API';
 //import RepoList from '../../components/RepoList';
@@ -88,7 +87,6 @@ export default function Home() {
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               FRONT END MENTOR PORTFOLIO
             </Typography>
-            <Avatar alt="Vinicius Gehrke" src="../../assets/img/Profile.jpeg" />
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Father of two wonderful Sapiens and husband of a beautiful Black Queen.
             </Typography>
