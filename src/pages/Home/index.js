@@ -7,26 +7,15 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+//import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import dadosIniciais from '../../data/initial_data.json'; 
-//import RepoList from '../../API';
-//import RepoList from '../../components/RepoList';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/ViniciusLagoGehrke">
-      Visit my GitHub
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import dadosIniciais from '../../data/initial_data.json';
+import Copyright from '../../components/Copyright';
 
+
+// Defining Component Styles //
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -70,9 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = dadosIniciais;
 
-console.log(cards);
 
 export default function Home() {
   const classes = useStyles();
@@ -84,9 +71,12 @@ export default function Home() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              FRONT END MENTOR PORTFOLIO
-            </Typography>
+            <Container>
+              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                Vinicius Gehrke
+              </Typography>
+              {/*<Avatar alt="Vinicius Gehrke" src="" />*/}
+            </Container>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Father of two wonderful Sapiens and husband of a beautiful Black Queen.
             </Typography>
@@ -94,10 +84,11 @@ export default function Home() {
             </Typography>
           </Container>
         </div>
+        {/* End hero unit */}
+        {/* Maping data into cards */}
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.projects.map((card, index) => (
+            {dadosIniciais.projects.map((card, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -126,6 +117,7 @@ export default function Home() {
             ))}
           </Grid>
         </Container>
+        {/* End cards section */}
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
