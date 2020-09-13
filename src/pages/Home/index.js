@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -80,43 +77,9 @@ console.log(cards);
 export default function Home() {
   const classes = useStyles();
 
-  const [name, setName] = useState('');
-  const [content, setContent] = useState('');
-  const [url, setUrl] = useState('');
-  const [login, setLogin] = useState('');
-  //const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
-    fetch(url)
-      .then(res => res.json())
-      .then(data=> {
-        setData(data);
-      });
-  }, []);
-
-  const setData = ({
-    name,
-    contents_url,
-    html_url,
-    owner
-  }) => {
-    setName(name);
-    setContent(contents_url);
-    setUrl(html_url);
-    setLogin(owner);
-  };
-
   return(
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            FRONT END MENTOR PORTFOLIO
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -125,33 +88,10 @@ export default function Home() {
               FRONT END MENTOR PORTFOLIO
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              This website is a showcase exercises where I practiced my skills in HTML, CSS and also JS. The page itself was done using React, Material UI and the Github API.
+              Father of two wonderful Sapiens and husband of a beautiful Black Queen.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary" >
-                    List Repositories
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-            <Grid>
-              <Typography component="h3" variant="h3" align="center" color="textPrimary">
-                List Repositories
-              </Typography>
-              <List component="nav" aria-label="FEM repositories">
-                {name}
-                {content}
-                {url}
-                {login}                
-              </List>
-            </Grid>
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>Formally a civil engineer, now a front-end developer with a keen interest in new technologies.
+            </Typography>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
