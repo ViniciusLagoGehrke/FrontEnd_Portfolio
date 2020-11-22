@@ -8,7 +8,7 @@ function RepoList (){
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const url = "https://api.github.com/search/repositories?q=component+in:readme+user:ViniciusLagoGehrke"
+    const url = "https://api.github.com/search/repositories?q=OnPortfolio+in:readme+user:ViniciusLagoGehrke"
     fetch(url)
       .then(res => res.json())
       .then(data=> {
@@ -38,7 +38,7 @@ const handleDisplay = () => {
     .then(res => res.json())
     .then(data=> {
       setData(data);
-  });
+    });
 };
 
   return
