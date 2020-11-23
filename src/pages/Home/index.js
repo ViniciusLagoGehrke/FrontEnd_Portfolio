@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import dadosIniciais from '../../data/initial_data.json';
 import Copyright from '../../components/Copyright';
 
 
@@ -38,9 +37,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
   },
   card: {
+    minHeight: '438px',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'space-between',
     transition: '0.4s ease-out',
     '&:hover': {
       transform: 'scale(1.05)',
@@ -64,6 +65,21 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const classes = useStyles();
 
+  const [repos, setRepos] = useState([]);
+
+  const userName = "ViniciusLagoGehrke"
+  const keyWord = "OnPortfolio"
+
+  useEffect(() => {
+    const githubRepos = `https://api.github.com/search/repositories?q=${keyWord}+in:readme+user:${userName}`
+
+    fetch(githubRepos)
+      .then(res => res.json())
+      .then(data=> {
+        setRepos(data.items)
+      });
+  }, []);
+
   return(
     <React.Fragment>
       <CssBaseline />
@@ -78,9 +94,9 @@ export default function Home() {
               {/*<Avatar alt="Vinicius Gehrke" src="" />*/}
             </Container>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Father of two wonderful Sapiens and husband of a beautiful Black Queen.
+              Formally a civil engineer, now a front-end developer with a keen interest in new technologies.
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>Formally a civil engineer, now a front-end developer with a keen interest in new technologies.
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>This webpage is a showcase for my personal projects and works. It was developed with <strong>React</strong> and <strong>Material UI</strong> and and automatically populated using the <strong>Github API</strong>.
             </Typography>
           </Container>
         </div>
@@ -88,27 +104,27 @@ export default function Home() {
         {/* Maping data into cards */}
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {dadosIniciais.projects.map((card, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4}>
+            {repos.map(repo => (
+              <Grid item key={repo.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={card.image}
-                    title={card.title}
+                    image={`https://raw.githubusercontent.com/${userName}/${repo.name}/master/desktop-preview.jpg`}
+                    title={repo.name}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {card.title}
+                      {repo.name}
                     </Typography>
                     <Typography>
-                      {card.description}
+                      {repo.description}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary" href={card.link}>
+                    <Button size="small" color="primary" href={repo.homepage}>
                       Visit
                     </Button>
-                    <Button size="small" color="primary" href={card.code}>
+                    <Button size="small" color="primary" href={repo.html_url}>
                       Check Code
                     </Button>
                   </CardActions>
