@@ -23,16 +23,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  heroButtons:{
+  heroButtons: {
     marginTop: theme.spacing(4),
   },
-  repoList:{
+  repoList: {
     marginTop: 30,
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
-  cardGrid:{
+  cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
       transform: 'scale(1.05)',
     }
   },
-  cardMedia:{
+  cardMedia: {
     height: '0',
     paddingTop: '56.25%', //16:9
   },
-  cardContent:{
+  cardContent: {
     flexGrow: 'initial',
   },
   footer: {
@@ -75,12 +75,12 @@ export default function Home() {
 
     fetch(githubRepos)
       .then(res => res.json())
-      .then(data=> {
+      .then(data => {
         setRepos(data.items)
       });
   }, []);
 
-  return(
+  return (
     <React.Fragment>
       <CssBaseline />
       <main>
@@ -101,35 +101,37 @@ export default function Home() {
           </Container>
         </div>
         {/* End hero unit */}
-        {/* Maping data into cards */}
+        {/* Maping repos data into cards */}
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {repos.map(repo => (
-              <Grid item key={repo.id} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={`https://raw.githubusercontent.com/${userName}/${repo.name}/master/desktop-preview.jpg`}
-                    title={repo.name}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {repo.name}
-                    </Typography>
-                    <Typography>
-                      {repo.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary" href={repo.homepage}>
-                      Visit
-                    </Button>
-                    <Button size="small" color="primary" href={repo.html_url}>
-                      Check Code
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+              repo.name !== "FrontEnd_Portfolio" ? (
+                <Grid item key={repo.id} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={`https://raw.githubusercontent.com/${userName}/${repo.name}/master/desktop-preview.jpg`}
+                      title={repo.name}
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {repo.name}
+                      </Typography>
+                      <Typography>
+                        {repo.description}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary" href={repo.homepage}>
+                        Visit
+                      </Button>
+                      <Button size="small" color="primary" href={repo.html_url}>
+                        Check Code
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ) : ""
             ))}
           </Grid>
         </Container>
