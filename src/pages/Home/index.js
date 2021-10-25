@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '56.25%', //16:9
   },
   cardContent:{
-    flexGrow: 'initial',
+    flexGrow: '1',
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -105,6 +105,7 @@ export default function Home() {
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {repos.map(repo => (
+                repo.name !== "FrontEnd_Portfolio" ? (
               <Grid item key={repo.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -130,6 +131,7 @@ export default function Home() {
                   </CardActions>
                 </Card>
               </Grid>
+              ) : ""
             ))}
           </Grid>
         </Container>
