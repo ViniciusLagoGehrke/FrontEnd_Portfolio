@@ -1,15 +1,15 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-//import ListItem from '@material-ui/core/ListItem';
-//import ListItemText from '@material-ui/core/ListItemText';
-//import Divider from '@material-ui/core/Divider';
-import getRepos from '../../API';
+import React from "react";
+import { makeStyles } from "@mui/material/styles";
+import List from "@mui/material/List";
+// import ListItem from '@mui/material/ListItem';
+// import ListItemText from '@mui/material/ListItemText';
+// import Divider from '@mui/material/Divider';
+// import getRepos from "../../API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 30,
-    width: '100%',
+    width: "100%",
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
@@ -23,12 +23,9 @@ function ListItemLink(props) {
 
 function RepoList() {
   const classes = useStyles();
-  const reposList = getRepos.items
-  console.log(reposList);
   return (
     <div className={classes.root}>
-      <List component="nav" aria-label="FEM repositories">
-      </List>
+      <List component="nav" aria-label="FEM repositories" />
     </div>
   );
 }
