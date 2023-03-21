@@ -13,7 +13,7 @@ module.exports = {
   ignorePatterns: ["**/API/index.js"],
 	rules: {
 		indent: ['error', 2],
-		'linebreak-style': ['error', 'windows'],
+		'linebreak-style': ['off'],
 		quotes: ['error', 'double'],
 		'react/react-in-jsx-scope': 'off',
 	},
