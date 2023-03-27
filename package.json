@@ -3,20 +3,23 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@emotion/babel-plugin": "^11.10.6",
 		"@emotion/react": "^11.10.6",
 		"@emotion/styled": "^11.10.6",
 		"@mui/material": "^5.11.14",
+		"next": "^13.2.4",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-scripts": "^5.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"dev": "next dev",
+		"start": "next start",
+		"build": "next build",
+		"lint": "eslint \"src/**/*.{js,jsx}\"",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint \"src/**/*.{js,jsx}\"",
 		"lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
 		"format": "prettier --write \"**/*.{js,jsx,json,md}\"",
 		"prepare": "husky install"
@@ -37,15 +40,19 @@
 		]
 	},
 	"devDependencies": {
+		"@types/node": "18.15.5",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
 		"eslint": "^8.36.0",
-		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-next": "13.2.4",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"husky": "^8.0.3",
-		"prettier": "^2.8.6"
+		"prettier": "^2.8.6",
+		"typescript": "^4"
 	}
 }

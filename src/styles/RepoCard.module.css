@@ -1,0 +1,89 @@
+.card_wrapper {
+  font-family: var(--font-mono);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.4s ease-out;
+  background-color: rgb(var(--background-paper));
+  border: 1px black solid;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.card_wrapper:hover {
+  transform: scale(1.05);
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .card_wrapper:hover {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .card_wrapper:hover {
+    transform: none;
+  }
+}
+
+
+.image_wrapper {
+  flex-grow: 6;
+  /* padding-top: 56.25%; */
+}
+
+.content {
+  background-color: antiquewhite;
+  flex-grow: 2;
+}
+
+.content h3 {
+  padding: 0.5rem;
+}
+
+.chips_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  background-color: aqua;
+}
+
+.chips_wrapper div {
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: blue;
+  color: #fff;
+}
+
+.description {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.buttons_wrapper {
+  background-color: beige;
+  height: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.buttons_wrapper > :not(:first-child) {
+    margin-left: 0.5rem;
+}
+
+.buttons_wrapper button {
+  min-width: 50px;
+  padding: 4px 5px;
+  border-radius: 4px;
+}
+
+.buttons_wrapper button:hover {
+  background-color: #f7f7f7;
+}
