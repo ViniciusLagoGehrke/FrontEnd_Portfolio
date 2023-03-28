@@ -9,8 +9,7 @@ const keyWord = "OnPortfolio";
 const githubRepos = `https://api.github.com/search/repositories?q=${keyWord}+in:readme+user:${userName}`;
 
 export default function Home() {
-  const repos = useRepos( githubRepos );
-
+  const repos = useRepos({ query: githubRepos });
   return (
     <>
       <Header fullName={fullName}/>
