@@ -17,8 +17,8 @@ module.exports = {
   ignorePatterns: ["**/API/index.js"],
   rules: {
     indent: ["error", 2],
-    "linebreak-style": ["off"],
-    quotes: ["error", "double", { "avoidEscape": true }],
+    "linebreak-style": "off",
+    quotes: "off",
     "react/no-unknown-property": ["off", { ignore: ["css"] }],
     "react/react-in-jsx-scope": "off",
   },
