@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     indent: ["error", 2],
     "linebreak-style": ["off"],
-    quotes: ["error", "double"],
+    quotes: ["error", "double", { "avoidEscape": true }],
     "react/no-unknown-property": ["off", { ignore: ["css"] }],
     "react/react-in-jsx-scope": "off",
   },
