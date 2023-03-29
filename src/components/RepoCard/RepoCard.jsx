@@ -18,7 +18,7 @@ function RepoCard({ userName, repo }) {
           {repo.topics?.length > 0
             ? repo.topics.map((topic) => (
               <div key={topic}>
-                <p>{topic}</p>
+                <span>{topic}</span>
               </div>
 							  ))
             : null}

@@ -13,6 +13,7 @@ export default function Header({ fullName }) {
           Formally a civil engineer, now a frontend developer with a keen
           interest in new technologies.
         </p>
+        <br />
         <p>
           This webpage is a showcase for my personal projects and works. It
           was developed with <strong>React </strong>and{" "} <strong>Next.js</strong> and{" "}
