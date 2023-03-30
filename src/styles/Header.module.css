@@ -1,0 +1,21 @@
+.header {
+  min-height: 60vh;
+  padding: 2rem 0 1rem;
+  background-color: rgba(var(--background-paper), 0);
+  font-family: var(--font-mono);
+}
+
+.header_wrapper {
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.header_wrapper h1 {
+  margin-bottom: 1rem;
+}
+
+.header_wrapper p {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 1.2rem;
+}
