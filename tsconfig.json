@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Copyright/Copyright.jsx", "src/components/RepoCard/index.jsx", "src/components/RepoCard/index.jsx", "src/components/Copyright/index.jsx", "src/components/Copyright/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
