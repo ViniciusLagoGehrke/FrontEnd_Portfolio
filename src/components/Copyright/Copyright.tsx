@@ -1,6 +1,10 @@
 import React from 'react';
 
-function Copyright({ ownersGithub }) {
+type CopyrightProps = {
+  ownersGithub: string
+}
+
+function Copyright({ ownersGithub }: CopyrightProps) {
   return (
     <p>
       Copyright © <a href={ownersGithub}>Visit my GitHub</a>{' '}

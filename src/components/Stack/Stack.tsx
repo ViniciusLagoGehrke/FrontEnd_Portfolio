@@ -1,5 +1,5 @@
 import React from 'react';
-import { StackProp } from '../types';
+import { StackProp } from '../../types';
 
 function Stack({
   children,

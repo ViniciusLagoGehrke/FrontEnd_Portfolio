@@ -1,5 +1,5 @@
 import React from 'react';
-import { Repo } from '../types';
+import { Repo } from '../../types';
 import styles from '@/styles/RepoCard.module.css';
 import Link from 'next/link';
 

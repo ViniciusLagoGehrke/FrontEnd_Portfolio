@@ -1,6 +1,9 @@
 import styles from '@/styles/Header.module.css';
 
-export default function Header({ fullName }) {
+type HeaderProps = {
+  fullName: string
+}
+export default function Header({ fullName }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.header_wrapper}>

@@ -10,6 +10,9 @@ const repoMock = {
     'Progressive Web Weather App using React and Open Weather Map API',
   homepage: 'https://pwa-weather-viniciuslagogehrke.vercel.app/',
   html_url: 'https://github.com/ViniciusLagoGehrke/PWA_Weather',
+  owner: {
+    html_url:""
+  }
 };
 
 describe('RepoCard', () => {

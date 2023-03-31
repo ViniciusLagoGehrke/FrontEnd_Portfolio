@@ -1,7 +1,12 @@
 import Copyright from '../Copyright';
 import styles from '@/styles/Footer.module.css';
+import { Repo } from '@/types';
 
-export default function Footer({ repos }) {
+type FooterProps = {
+  repos: Repo[]
+}
+
+export default function Footer({ repos }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <p>Coded with love!</p>

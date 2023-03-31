@@ -1,7 +1,12 @@
 import RepoCard from '../RepoCard';
 import styles from '@/styles/RepoList.module.css';
+import { Repo } from '@/types';
 
-export default function RepoList({ userName, repos }) {
+type RepoListProps = {
+  userName: string,
+  repos: Repo[]
+}
+export default function RepoList({ userName, repos }: RepoListProps) {
   return (
     <div className={styles.projects_wrapper}>
       <div className={styles.projects_grid}>

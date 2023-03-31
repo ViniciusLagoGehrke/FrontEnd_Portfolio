@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
+import { Repo } from '@/types';
 
-export default function useRepos({ query }) {
-  const [repos, setRepos] = useState([]);
+type UseReposProps ={
+  query: string
+}
+
+export default function useRepos({ query }: UseReposProps) {
+  const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
     fetch(query)
       .then((res) => res.json())
       .then((data) => {
-        setRepos(data.items);
+        setRepos(data.items as Repo[]);
       });
   }, [query]);
 

@@ -7,6 +7,9 @@ export type Repo = {
   description: string;
   homepage: string;
   html_url: string;
+  owner: {
+    html_url: string
+  }
 };
 
 export type StackProp = {
