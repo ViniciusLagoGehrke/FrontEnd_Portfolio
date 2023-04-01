@@ -7,9 +7,7 @@ export default function Header({ fullName }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.header_wrapper}>
-        <div>
-          <h1>{fullName}</h1>
-        </div>
+        <h1>{fullName}</h1>
         <p>
           Formally a civil engineer, now a frontend developer with a keen
           interest in new technologies.
