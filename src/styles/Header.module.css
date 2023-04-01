@@ -12,10 +12,26 @@
 }
 
 .header_wrapper h1 {
+  font-family: 'Karla', sans-serif;
   margin-bottom: 1rem;
 }
 
 .header_wrapper p {
+  font-family: 'Inconsolata', monospace;
   color: rgba(0, 0, 0, 0.54);
   font-size: 1.2rem;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .header_wrapper {
+    max-width: var(--max-width-sm);
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .header_wrapper {
+    max-width: var(--max-width-md);
+  }
 }

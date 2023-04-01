@@ -36,7 +36,9 @@
 }
 
 .content h3 {
+  font-family: 'Karla', sans-serif;
   padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .chips_wrapper {
@@ -58,6 +60,7 @@
 }
 
 .description {
+  font-family: 'Inconsolata', monospace;
   margin: 0;
   padding: 0.5rem;
 }
