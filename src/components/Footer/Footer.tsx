@@ -1,16 +1,15 @@
 import Copyright from '../Copyright';
 import styles from '@/styles/Footer.module.css';
-import { Repo } from '@/types';
 
 type FooterProps = {
-  repos: Repo[]
+  ownersGithub: string
 }
 
-export default function Footer({ repos }: FooterProps) {
+export default function Footer({ ownersGithub = '/' }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <p>Coded with love!</p>
-      {repos[0] ? <Copyright ownersGithub={repos[0].owner.html_url} /> : null}
+      <Copyright ownersGithub={ownersGithub} />
     </footer>
   );
 }
