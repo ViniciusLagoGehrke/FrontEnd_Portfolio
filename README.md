@@ -3,7 +3,7 @@
 This webpage is showcases my personal projects and works.
 It was developed with React and Material UI and and automatically populated using the Github API.
 
-Feel free to leave some sugestions, PR's or a star ;)
+Feel free to leave some sugestions, PR's or a star :wink:
 
 In order to use it you should add in each repository:
 
