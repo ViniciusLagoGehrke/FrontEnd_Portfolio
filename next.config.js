@@ -90,5 +90,8 @@ module.exports = withContentlayer(
 
       return config
     },
+    images: {
+      domains: ['raw.githubusercontent.com'],
+    },
   })
 )

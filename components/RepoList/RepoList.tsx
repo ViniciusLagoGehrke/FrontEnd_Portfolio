@@ -1,4 +1,4 @@
-import RepoCard from '../RepoCard'
+import Card from '@/components/Card'
 import { Repo } from 'types/Repo'
 
 type RepoListProps = {
@@ -8,14 +8,25 @@ type RepoListProps = {
 
 export default function RepoList({ userName, repos }: RepoListProps) {
   return (
-    <div className="py-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 justify-center">
-      {repos.map((repo) =>
-        repo.name !== 'FrontEnd_Portfolio' ? (
-          <RepoCard key={repo.id} userName={userName} repo={repo} />
+    <ul className="py-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 justify-center">
+      {repos.map((repo) => {
+        const { id, name, description, topics, homepage, html_url } = repo
+        const imgSrc = `https://raw.githubusercontent.com/${userName}/${name}/master/desktop-preview.jpg`
+
+        return name !== 'FrontEnd_Portfolio' ? (
+          <Card
+            key={id}
+            title={name}
+            description={description}
+            imgSrc={imgSrc}
+            href={homepage}
+            tags={topics}
+            code={html_url}
+          />
         ) : (
           ''
         )
-      )}
-    </div>
+      })}
+    </ul>
   )
 }
