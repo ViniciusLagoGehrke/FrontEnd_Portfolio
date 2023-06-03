@@ -1,0 +1,37 @@
+.header {
+  min-height: 60vh;
+  padding: 2rem 0 1rem;
+  background-color: rgba(var(--background-paper), 0);
+  font-family: var(--font-mono);
+}
+
+.header_wrapper {
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.header_wrapper h1 {
+  font-family: 'Karla', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.header_wrapper p {
+  font-family: 'Inconsolata', monospace;
+  color: rgba(var(--foreground-rgb) 0.54);
+  font-size: 1.2rem;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .header_wrapper {
+    max-width: var(--max-width-sm);
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .header_wrapper {
+    max-width: var(--max-width-md);
+  }
+}
