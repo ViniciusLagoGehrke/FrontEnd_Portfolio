@@ -24,7 +24,7 @@ const LayoutWrapper = ({ children }: Props) => {
                   <Logo />
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block leading-6">
+                  <div className="ml-3 hidden h-6 text-2xl font-semibold leading-6 sm:block">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (

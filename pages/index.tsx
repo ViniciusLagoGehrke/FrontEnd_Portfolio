@@ -22,7 +22,7 @@ export default function Home({ repos }: InferGetStaticPropsType<typeof getStatic
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <section className="flex flex-col justify-center space-y-2 h-96 pt-6 pb-8 md:space-y-5">
+      <section className="flex h-96 flex-col justify-center space-y-2 pb-8 pt-6 md:space-y-5">
         <h1 className="text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14">
           Hi, I'm Vinicius from Earth! 🖖
         </h1>

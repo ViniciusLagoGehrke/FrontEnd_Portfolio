@@ -8,7 +8,7 @@ type RepoListProps = {
 
 export default function RepoList({ userName, repos }: RepoListProps) {
   return (
-    <ul className="py-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 justify-center">
+    <ul className="grid justify-center gap-4 py-8 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
       {repos.map((repo) => {
         const { id, name, description, topics, homepage, html_url } = repo
         const imgSrc = `https://raw.githubusercontent.com/${userName}/${name}/master/desktop-preview.jpg`
