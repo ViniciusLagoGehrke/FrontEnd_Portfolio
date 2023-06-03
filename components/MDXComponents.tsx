@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React from 'react'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { ComponentMap } from 'mdx-bundler/client'
+import { MDXContentProps } from 'mdx-bundler/client'
 import { coreContent } from '@/lib/utils/contentlayer'
 import Image from './Image'
 import CustomLink from './Link'
@@ -26,7 +26,7 @@ const Wrapper = ({ layout, content, ...rest }: MDXLayout) => {
   return <Layout content={content} {...rest} />
 }
 
-export const MDXComponents: ComponentMap = {
+export const MDXComponents: MDXContentProps = {
   Image,
   TOCInline,
   a: CustomLink,

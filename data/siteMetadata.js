@@ -1,12 +1,11 @@
 const siteMetadata = {
   title: 'Portfolio & Blog',
   author: 'Vinicius Gehrke',
-  headerTitle: 'Portfolio & Blog',
+  headerTitle: 'Back Home',
   description: 'Portfolio & Technical Blog',
   intro: {
-    first: 'Father of two amazing human beings and married to an always inspiring woman.',
-    second:
-      'Formally a civil engineer, now a web developer with an interest in new technologies and maps.',
+    first: 'From Earth, born and raised in Brazil currently located in Berlin.',
+    second: 'Web developer with an interest in new technologies and maps.',
   },
   language: 'en-us',
   theme: 'system', // system, dark or light
