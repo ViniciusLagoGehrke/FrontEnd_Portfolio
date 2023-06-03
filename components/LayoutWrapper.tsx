@@ -20,11 +20,11 @@ const LayoutWrapper = ({ children }: Props) => {
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
-                <div className="rotate-180">
+                <div>
                   <Logo />
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block">
+                  <div className="ml-3 hidden h-6 text-2xl font-semibold sm:block leading-6">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (

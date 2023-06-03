@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: 'Portfolio & Blog',
   author: 'Vinicius Gehrke',
-  headerTitle: 'Back Home',
+  headerTitle: '← Back Home',
   description: 'Portfolio & Technical Blog',
   intro: {
     first: 'From Earth, born and raised in Brazil currently located in Berlin.',
