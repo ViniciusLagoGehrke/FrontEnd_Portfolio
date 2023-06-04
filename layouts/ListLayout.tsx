@@ -19,8 +19,8 @@ interface Props {
 }
 
 export default function ListLayout({
-  posts,
-  repos,
+  posts = [],
+  repos = [],
   title,
   initialDisplayPosts = [],
   initialDisplayRepos = [],
@@ -46,6 +46,19 @@ export default function ListLayout({
     initialDisplayRepos.length > 0 && !searchValue
       ? initialDisplayRepos
       : filteredRepos;
+
+  const renderProjects = () => (
+    <div>
+      <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
+        Projects
+      </h3>
+      {!filteredRepos.length ? (
+        <ul>{'No posts found.'}</ul>
+      ) : (
+        <RepoList repos={displayRepos} userName={siteMetadata.userName} />
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -121,16 +134,7 @@ export default function ListLayout({
             })}
           </ul>
         </div>
-        <div>
-          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
-            Projects
-          </h3>
-          {!filteredRepos.length ? (
-            <ul>{'No posts found.'}</ul>
-          ) : (
-            <RepoList repos={displayRepos} userName={siteMetadata.userName} />
-          )}
-        </div>
+        {!!repos.length && renderProjects()}
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination

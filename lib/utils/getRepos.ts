@@ -13,7 +13,7 @@ export default async function getRepos(url: string) {
 export async function getReposTags(repos: Repo[]) {
   const tagCount: Record<string, number> = {};
   // Iterate through each post, putting all found tags into `tags`
-  repos.forEach((repo) => {
+  repos?.forEach((repo) => {
     if (repo.topics?.length > 0) {
       repo.topics.forEach((tag) => {
         const formattedTag = kebabCase(tag);
