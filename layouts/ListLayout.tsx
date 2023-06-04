@@ -10,8 +10,8 @@ import type { Blog } from 'contentlayer/generated';
 import { Repo } from 'types/Repo';
 
 interface Props {
-  posts: CoreContent<Blog>[];
-  repos: Repo[];
+  posts?: CoreContent<Blog>[];
+  repos?: Repo[];
   title: string;
   initialDisplayPosts?: CoreContent<Blog>[];
   initialDisplayRepos?: Repo[];
