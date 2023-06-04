@@ -1,5 +1,5 @@
 const siteMetadata = {
-  title: 'Portfolio & Blog',
+  title: 'V. Gehrke',
   author: 'Vinicius Gehrke',
   headerTitle: '← Back Home',
   description: 'Portfolio & Technical Blog',
@@ -82,6 +82,6 @@ const siteMetadata = {
       shortname: process.env.NEXT_PUBLIC_DISQUS_SHORTNAME,
     },
   },
-}
+};
 
-module.exports = siteMetadata
+module.exports = siteMetadata;

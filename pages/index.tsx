@@ -13,7 +13,7 @@ export const getStaticProps = async () => {
   // TODO: move computation to get only the essential frontmatter to contentlayer.config
   // const sortedPosts = sortedBlogPost(allBlogs)
   // const posts = allCoreContent(sortedPosts)
-  const repos = await getRepos(siteMetadata.githubRepos);
+  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
 
   return { props: { repos } };
 };
