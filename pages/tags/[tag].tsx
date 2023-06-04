@@ -31,13 +31,13 @@ export const getStaticProps = async (context) => {
   const tag = context.params.tag as string;
 
   const filteredPosts = allCoreContent(
-    allBlogs.filter(
+    allBlogs?.filter(
       (post) =>
         post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(tag)
     )
   );
 
-  const filteredRepos = repos.filter((repo) =>
+  const filteredRepos = repos?.filter((repo) =>
     repo.topics.map((t) => kebabCase(t)).includes(tag)
   );
 

@@ -31,7 +31,7 @@ export default function ListLayout({
     const searchContent = post.title + post.summary + post.tags.join(' ');
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
-  const filteredRepos = repos.filter((repo) => {
+  const filteredRepos = repos?.filter((repo) => {
     const searchContent = repo.name + repo.description + repo.topics.join(' ');
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
