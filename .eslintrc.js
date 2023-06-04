@@ -1,21 +1,38 @@
 module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
-    es2021: true,
+    amd: true,
+    node: true,
+    es6: true,
   },
-  extends: ['plugin:react/recommended', 'prettier', 'next/core-web-vitals'],
-  overrides: [],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['react', 'prettier'],
-  ignorePatterns: ['**/API/index.js'],
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
+    'next',
+    'next/core-web-vitals',
+  ],
   rules: {
-    indent: ['error', 2],
-    'linebreak-style': 'off',
-    quotes: 'off',
-    'react/no-unknown-property': ['off', { ignore: ['css'] }],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
+    'react/prop-types': 0,
+    'no-unused-vars': 0,
+    'react/no-unescaped-entities': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
-};
+}
