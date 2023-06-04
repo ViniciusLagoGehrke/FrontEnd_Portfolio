@@ -5,7 +5,7 @@ import RepoList from '@/components/RepoList';
 import { PageSEO } from '@/components/SEO';
 
 export const getStaticProps = async () => {
-  const repos = await getRepos(siteMetadata.githubRepos);
+  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
 
   return { props: { repos } };
 };

@@ -14,7 +14,7 @@ import { allBlogs } from 'contentlayer/generated';
 export const getStaticProps: GetStaticProps<{
   tags: Record<string, number>;
 }> = async () => {
-  const repos = await getRepos(siteMetadata.githubRepos);
+  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
 
   const blogTags = await getAllTags(allBlogs);
   const repoTags = await getReposTags(repos);

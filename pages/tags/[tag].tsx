@@ -9,7 +9,7 @@ import { InferGetStaticPropsType } from 'next';
 import { allBlogs } from 'contentlayer/generated';
 
 export async function getStaticPaths() {
-  const repos = await getRepos(siteMetadata.githubRepos);
+  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
 
   const blogTags = await getAllTags(allBlogs);
   const repoTags = await getReposTags(repos);
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-  const repos = await getRepos(siteMetadata.githubRepos);
+  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
   const tag = context.params.tag as string;
 
   const filteredPosts = allCoreContent(
