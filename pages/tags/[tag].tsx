@@ -7,35 +7,21 @@ import { getReposTags } from '@/lib/utils/getReposTags'
 import mergeTagCounts from 'lib/utils/mergeTagCounts'
 import { InferGetStaticPropsType } from 'next'
 import { allBlogs } from 'contentlayer/generated'
-// import { server } from 'lib/config'
+import { server } from 'lib/config'
 import { Repo } from 'types/Repo'
 
 export async function getStaticPaths() {
-  // const headers = new Headers({
-  //   Accept: 'application/json',
-  //   'Content-Type': 'application/json',
-  //   'User-Agent': '*',
-  // })
-  // const res = await fetch(`${server}/api/getrepos`, {
-  //   method: 'GET',
-  //   headers: headers,
-  // })
-  // console.log(res)
-  // const repos: Repo[] = await res.json()
-  const repos: Repo[] = [
-    {
-      id: 359735105,
-      name: 'PWA_Weather',
-      owner: {
-        html_url: 'https://github.com/ViniciusLagoGehrke',
-      },
-      html_url: 'https://github.com/ViniciusLagoGehrke/PWA_Weather',
-      description:
-        'Progressive Web Weather App using React and Open Weather Map API',
-      homepage: 'https://pwa-weather-viniciuslagogehrke.vercel.app/',
-      topics: ['api-rest', 'pwa', 'react'],
-    },
-  ]
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
+  const repos: Repo[] = await res.json()
 
   const blogTags = await getAllTags(allBlogs)
   const repoTags = await getReposTags(repos)
@@ -53,31 +39,17 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-  // const headers = new Headers({
-  //   Accept: 'application/json',
-  //   'Content-Type': 'application/json',
-  //   'User-Agent': '*',
-  // })
-  // const res = await fetch(`${server}/api/getrepos`, {
-  //   method: 'GET',
-  //   headers: headers,
-  // })
-  // console.log(res)
-  // const repos: Repo[] = await res.json()
-  const repos: Repo[] = [
-    {
-      id: 359735105,
-      name: 'PWA_Weather',
-      owner: {
-        html_url: 'https://github.com/ViniciusLagoGehrke',
-      },
-      html_url: 'https://github.com/ViniciusLagoGehrke/PWA_Weather',
-      description:
-        'Progressive Web Weather App using React and Open Weather Map API',
-      homepage: 'https://pwa-weather-viniciuslagogehrke.vercel.app/',
-      topics: ['api-rest', 'pwa', 'react'],
-    },
-  ]
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
+  const repos: Repo[] = await res.json()
 
   const tag = context.params.tag as string
 
