@@ -1,21 +1,21 @@
-import { ComponentProps, useState } from 'react';
-import Link from '@/components/Link';
-import Tag from '@/components/Tag';
-import Pagination from '@/components/Pagination';
-import RepoList from '@/components/RepoList';
-import formatDate from '@/lib/utils/formatDate';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import siteMetadata from '@/data/siteMetadata';
-import type { Blog } from 'contentlayer/generated';
-import { Repo } from 'types/Repo';
+import { ComponentProps, useState } from 'react'
+import Link from '@/components/Link'
+import Tag from '@/components/Tag'
+import Pagination from '@/components/Pagination'
+import RepoList from '@/components/RepoList'
+import formatDate from '@/lib/utils/formatDate'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import siteMetadata from '@/data/siteMetadata'
+import type { Blog } from 'contentlayer/generated'
+import { Repo } from 'types/Repo'
 
 interface Props {
-  posts?: CoreContent<Blog>[];
-  repos?: Repo[];
-  title: string;
-  initialDisplayPosts?: CoreContent<Blog>[];
-  initialDisplayRepos?: Repo[];
-  pagination?: ComponentProps<typeof Pagination>;
+  posts?: CoreContent<Blog>[]
+  repos?: Repo[]
+  title: string
+  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayRepos?: Repo[]
+  pagination?: ComponentProps<typeof Pagination>
 }
 
 export default function ListLayout({
@@ -26,39 +26,33 @@ export default function ListLayout({
   initialDisplayRepos = [],
   pagination,
 }: Props) {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags.join(' ');
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
+    const searchContent = post.title + post.summary + post.tags.join(' ')
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
   const filteredRepos = repos?.filter((repo) => {
-    const searchContent = repo.name + repo.description + repo.topics.join(' ');
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
+    const searchContent = repo.name + repo.description + repo.topics.join(' ')
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
 
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue
-      ? initialDisplayPosts
-      : filteredBlogPosts;
+    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
   const displayRepos =
-    initialDisplayRepos.length > 0 && !searchValue
-      ? initialDisplayRepos
-      : filteredRepos;
+    initialDisplayRepos.length > 0 && !searchValue ? initialDisplayRepos : filteredRepos
 
   const renderProjects = () => (
     <div>
-      <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
-        Projects
-      </h3>
+      <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">Projects</h3>
       {!filteredRepos.length ? (
         <ul>{'No posts found.'}</ul>
       ) : (
         <RepoList repos={displayRepos} userName={siteMetadata.userName} />
       )}
     </div>
-  );
+  )
 
   return (
     <>
@@ -92,13 +86,11 @@ export default function ListLayout({
       </div>
       <div className="divide-y">
         <div>
-          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
-            Posts
-          </h3>
+          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">Posts</h3>
           <ul>
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((post) => {
-              const { slug, date, title, summary, tags } = post;
+              const { slug, date, title, summary, tags } = post
               return (
                 <li key={slug} className="py-4">
                   <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
@@ -111,10 +103,7 @@ export default function ListLayout({
                     <div className="space-y-3 xl:col-span-3">
                       <div>
                         <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                          <Link
-                            href={`/blog/${slug}`}
-                            className="text-gray-900 dark:text-gray-100"
-                          >
+                          <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
                             {title}
                           </Link>
                         </h3>
@@ -130,18 +119,15 @@ export default function ListLayout({
                     </div>
                   </article>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
         {!!repos.length && renderProjects()}
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination
-          currentPage={pagination.currentPage}
-          totalPages={pagination.totalPages}
-        />
+        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
       )}
     </>
-  );
+  )
 }

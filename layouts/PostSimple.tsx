@@ -1,24 +1,24 @@
-import Link from '@/components/Link';
-import PageTitle from '@/components/PageTitle';
-import SectionContainer from '@/components/SectionContainer';
-import { BlogSEO } from '@/components/SEO';
-import siteMetadata from '@/data/siteMetadata';
-import formatDate from '@/lib/utils/formatDate';
-import Comments from '@/components/comments';
-import ScrollTopAndComment from '@/components/ScrollTopAndComment';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import { ReactNode } from 'react';
-import type { Blog } from 'contentlayer/generated';
+import Link from '@/components/Link'
+import PageTitle from '@/components/PageTitle'
+import SectionContainer from '@/components/SectionContainer'
+import { BlogSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import formatDate from '@/lib/utils/formatDate'
+import Comments from '@/components/comments'
+import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import { ReactNode } from 'react'
+import type { Blog } from 'contentlayer/generated'
 
 interface Props {
-  content: CoreContent<Blog>;
-  children: ReactNode;
-  next?: { slug: string; title: string };
-  prev?: { slug: string; title: string };
+  content: CoreContent<Blog>
+  children: ReactNode
+  next?: { slug: string; title: string }
+  prev?: { slug: string; title: string }
 }
 
 export default function PostLayout({ content, next, prev, children }: Props) {
-  const { slug, date, title } = content;
+  const { slug, date, title } = content
 
   return (
     <SectionContainer>
@@ -46,9 +46,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pb-8 pt-10 dark:prose-dark">
-                {children}
-              </div>
+              <div className="prose max-w-none pb-8 pt-10 dark:prose-dark">{children}</div>
             </div>
             <Comments frontMatter={content} />
             <footer>
@@ -79,5 +77,5 @@ export default function PostLayout({ content, next, prev, children }: Props) {
         </div>
       </article>
     </SectionContainer>
-  );
+  )
 }

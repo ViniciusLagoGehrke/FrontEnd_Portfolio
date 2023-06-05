@@ -1,17 +1,17 @@
-import Image from './Image';
-import Link from './Link';
+import Image from './Image'
+import Link from './Link'
 
 type CardProps = {
-  title: string;
-  description: string;
-  imgSrc: string;
-  href: string;
-  tags: string[];
-  code: string;
-};
+  title: string
+  description: string
+  imgSrc: string
+  href: string
+  tags: string[]
+  code: string
+}
 
 const Card = ({ title, description, imgSrc, href, tags, code }: CardProps) => {
-  console.log(tags);
+  console.log(tags)
   return (
     <li
       className="min-w-80 min-h-96 h-full max-w-xs p-4 "
@@ -67,7 +67,7 @@ const Card = ({ title, description, imgSrc, href, tags, code }: CardProps) => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
