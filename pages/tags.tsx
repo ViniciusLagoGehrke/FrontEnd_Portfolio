@@ -1,33 +1,36 @@
-import Link from '@/components/Link';
-import { PageSEO } from '@/components/SEO';
-import Tag from '@/components/Tag';
-import siteMetadata from '@/data/siteMetadata';
-import kebabCase from '@/lib/utils/kebabCase';
-import { getAllTags } from '@/lib/utils/contentlayer';
-import getRepos, { getReposTags } from '@/lib/utils/getRepos';
-import mergeTagCounts from 'lib/utils/mergeTagCounts';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { allBlogs } from 'contentlayer/generated';
+import Link from '@/components/Link'
+import { PageSEO } from '@/components/SEO'
+import Tag from '@/components/Tag'
+import siteMetadata from '@/data/siteMetadata'
+import kebabCase from '@/lib/utils/kebabCase'
+import { getAllTags } from '@/lib/utils/contentlayer'
+import { getReposTags } from '@/lib/utils/getReposTags'
+import mergeTagCounts from 'lib/utils/mergeTagCounts'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { allBlogs } from 'contentlayer/generated'
+import { server } from 'lib/config'
+import { Repo } from 'types/Repo'
 
 // TODO: refactor into contentlayer once compute over all docs is enabled
 
 export const getStaticProps: GetStaticProps<{
-  tags: Record<string, number>;
+  tags: Record<string, number>
 }> = async () => {
-  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
+  const res = await fetch(`${server}/api/getrepos`)
+  const repos: Repo[] = await res.json()
 
-  const blogTags = await getAllTags(allBlogs);
-  const repoTags = await getReposTags(repos);
+  const blogTags = await getAllTags(allBlogs)
+  const repoTags = await getReposTags(repos)
 
-  const tags = mergeTagCounts(blogTags, repoTags);
+  const tags = mergeTagCounts(blogTags, repoTags)
 
-  return { props: { tags } };
-};
+  return { props: { tags } }
+}
 
 export default function Tags({
   tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
+  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
     <>
       <PageSEO
@@ -53,10 +56,10 @@ export default function Tags({
                   {` (${tags[t]})`}
                 </Link>
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,14 +1,16 @@
-import { InferGetStaticPropsType } from 'next';
-import siteMetadata from '@/data/siteMetadata';
-import getRepos from '@/lib/utils/getRepos';
-import RepoList from '@/components/RepoList';
-import { PageSEO } from '@/components/SEO';
+import { InferGetStaticPropsType } from 'next'
+import siteMetadata from '@/data/siteMetadata'
+import RepoList from '@/components/RepoList'
+import { PageSEO } from '@/components/SEO'
+import { server } from 'lib/config'
+import { Repo } from 'types/Repo'
 
 export const getStaticProps = async () => {
-  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
+  const res = await fetch(`${server}/api/getrepos`)
+  const repos: Repo[] = await res.json()
 
-  return { props: { repos } };
-};
+  return { props: { repos } }
+}
 
 export default function Projects({
   repos,
@@ -32,5 +34,5 @@ export default function Projects({
         </div>
       </div>
     </>
-  );
+  )
 }

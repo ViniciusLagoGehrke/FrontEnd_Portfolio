@@ -4,8 +4,9 @@ import { InferGetStaticPropsType } from 'next';
 import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/data/siteMetadata';
 // import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
-import getRepos from '@/lib/utils/getRepos';
 import RepoList from '@/components/RepoList';
+import { server } from 'lib/config';
+import { Repo } from 'types/Repo';
 
 // const MAX_DISPLAY = 5
 
@@ -13,7 +14,8 @@ export const getStaticProps = async () => {
   // TODO: move computation to get only the essential frontmatter to contentlayer.config
   // const sortedPosts = sortedBlogPost(allBlogs)
   // const posts = allCoreContent(sortedPosts)
-  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
+  const res = await fetch(`${server}/api/getrepos`);
+  const repos: Repo[] = await res.json();
 
   return { props: { repos } };
 };
