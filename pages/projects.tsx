@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
     method: 'GET',
     headers: headers,
   })
-  console.log(res)
+
   const repos: Repo[] = await res.json()
 
   return { props: { repos } }
