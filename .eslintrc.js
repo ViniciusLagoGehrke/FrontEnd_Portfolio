@@ -21,6 +21,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        noConsole: ['error', { allow: ['warn', 'error'] }],
         endOfLine: 'auto',
         printWidth: 80,
         singleQuote: true,
