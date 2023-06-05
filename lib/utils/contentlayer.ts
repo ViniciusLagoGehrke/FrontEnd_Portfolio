@@ -35,7 +35,10 @@ export const pick = <Obj, Keys extends keyof Obj>(
   }, {} as any)
 }
 
-export const omit = <Obj, Keys extends keyof Obj>(obj: Obj, keys: Keys[]): Omit<Obj, Keys> => {
+export const omit = <Obj, Keys extends keyof Obj>(
+  obj: Obj,
+  keys: Keys[]
+): Omit<Obj, Keys> => {
   const result = Object.assign({}, obj)
   keys.forEach((key) => {
     delete result[key]

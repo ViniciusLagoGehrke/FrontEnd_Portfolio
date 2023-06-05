@@ -22,6 +22,7 @@ module.exports = {
       'error',
       {
         endOfLine: 'auto',
+        printWidth: 80,
         singleQuote: true,
         semi: false,
         trailingComma: 'es5',

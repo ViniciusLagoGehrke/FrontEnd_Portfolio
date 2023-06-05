@@ -2,7 +2,10 @@ import siteMetadata from '@/data/siteMetadata'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Repo } from 'types/Repo'
 
-export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+export default async function handler(
+  request: NextApiRequest,
+  response: NextApiResponse
+) {
   const res = await fetch(siteMetadata.githubRepos)
   const data = await res.json()
   const repos: Repo[] = data.items

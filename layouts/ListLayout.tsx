@@ -38,14 +38,20 @@ export default function ListLayout({
 
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+    initialDisplayPosts.length > 0 && !searchValue
+      ? initialDisplayPosts
+      : filteredBlogPosts
 
   const displayRepos =
-    initialDisplayRepos.length > 0 && !searchValue ? initialDisplayRepos : filteredRepos
+    initialDisplayRepos.length > 0 && !searchValue
+      ? initialDisplayRepos
+      : filteredRepos
 
   const renderProjects = () => (
     <div>
-      <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">Projects</h3>
+      <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
+        Projects
+      </h3>
       {!filteredRepos.length ? (
         <ul>{'No posts found.'}</ul>
       ) : (
@@ -86,7 +92,9 @@ export default function ListLayout({
       </div>
       <div className="divide-y">
         <div>
-          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">Posts</h3>
+          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
+            Posts
+          </h3>
           <ul>
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((post) => {
@@ -103,7 +111,10 @@ export default function ListLayout({
                     <div className="space-y-3 xl:col-span-3">
                       <div>
                         <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                          <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
+                          <Link
+                            href={`/blog/${slug}`}
+                            className="text-gray-900 dark:text-gray-100"
+                          >
                             {title}
                           </Link>
                         </h3>
@@ -126,7 +137,10 @@ export default function ListLayout({
         {!!repos.length && renderProjects()}
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+        <Pagination
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+        />
       )}
     </>
   )

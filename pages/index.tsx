@@ -20,10 +20,15 @@ export const getStaticProps = async () => {
   return { props: { repos } }
 }
 
-export default function Home({ repos }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({
+  repos,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+      <PageSEO
+        title={siteMetadata.title}
+        description={siteMetadata.description}
+      />
       <section className="flex h-96 flex-col justify-center space-y-2 pb-8 pt-6 md:space-y-5">
         <h1 className="text-lg font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14">
           Hi, I'm Vinicius from Earth! 🖖
@@ -41,7 +46,9 @@ export default function Home({ repos }: InferGetStaticPropsType<typeof getStatic
         <h2 className="text-md font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14">
           Projects
         </h2>
-        {repos ? <RepoList repos={repos} userName={siteMetadata.userName} /> : null}
+        {repos ? (
+          <RepoList repos={repos} userName={siteMetadata.userName} />
+        ) : null}
       </section>
       {/* {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
