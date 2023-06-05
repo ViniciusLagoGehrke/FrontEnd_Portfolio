@@ -6,7 +6,16 @@ import { server } from 'lib/config'
 import { Repo } from 'types/Repo'
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/getrepos`)
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
   const repos: Repo[] = await res.json()
 
   return { props: { repos } }

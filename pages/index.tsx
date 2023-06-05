@@ -14,7 +14,17 @@ export const getStaticProps = async () => {
   // TODO: move computation to get only the essential frontmatter to contentlayer.config
   // const sortedPosts = sortedBlogPost(allBlogs)
   // const posts = allCoreContent(sortedPosts)
-  const res = await fetch(`${server}/api/getrepos`)
+
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
   const repos: Repo[] = await res.json()
 
   return { props: { repos } }

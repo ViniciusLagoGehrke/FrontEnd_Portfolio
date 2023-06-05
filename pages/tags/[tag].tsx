@@ -11,7 +11,16 @@ import { server } from 'lib/config'
 import { Repo } from 'types/Repo'
 
 export async function getStaticPaths() {
-  const res = await fetch(`${server}/api/getrepos`)
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
   const repos: Repo[] = await res.json()
 
   const blogTags = await getAllTags(allBlogs)
@@ -30,7 +39,16 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/api/getrepos`)
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+  })
+  const res = await fetch(`${server}/api/getrepos`, {
+    method: 'GET',
+    headers: headers,
+  })
+  console.log(res)
   const repos: Repo[] = await res.json()
 
   const tag = context.params.tag as string
