@@ -1,20 +1,20 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import siteMetadata from '@/data/siteMetadata';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import type { Blog, Authors } from 'contentlayer/generated';
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import siteMetadata from '@/data/siteMetadata'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import type { Blog, Authors } from 'contentlayer/generated'
 interface CommonSEOProps {
-  title: string;
-  description: string;
-  ogType: string;
+  title: string
+  description: string
+  ogType: string
   ogImage:
     | string
     | {
-        '@type': string;
-        url: string;
-      }[];
-  twImage: string;
-  canonicalUrl?: string;
+        '@type': string
+        url: string
+      }[]
+  twImage: string
+  canonicalUrl?: string
 }
 
 const CommonSEO = ({
@@ -25,7 +25,7 @@ const CommonSEO = ({
   twImage,
   canonicalUrl,
 }: CommonSEOProps) => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Head>
       <title>{title}</title>
@@ -60,17 +60,17 @@ const CommonSEO = ({
         }
       />
     </Head>
-  );
-};
+  )
+}
 
 interface PageSEOProps {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 export const PageSEO = ({ title, description }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
+  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   return (
     <CommonSEO
       title={title}
@@ -79,13 +79,13 @@ export const PageSEO = ({ title, description }: PageSEOProps) => {
       ogImage={ogImageUrl}
       twImage={twImageUrl}
     />
-  );
-};
+  )
+}
 
 export const TagSEO = ({ title, description }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const router = useRouter();
+  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const router = useRouter()
   return (
     <>
       <CommonSEO
@@ -104,12 +104,12 @@ export const TagSEO = ({ title, description }: PageSEOProps) => {
         />
       </Head>
     </>
-  );
-};
+  )
+}
 
 interface BlogSeoProps extends CoreContent<Blog> {
-  authorDetails?: CoreContent<Authors>[];
-  url: string;
+  authorDetails?: CoreContent<Authors>[]
+  url: string
 }
 
 export const BlogSEO = ({
@@ -122,35 +122,35 @@ export const BlogSEO = ({
   images = [],
   canonicalUrl,
 }: BlogSeoProps) => {
-  const publishedAt = new Date(date).toISOString();
-  const modifiedAt = new Date(lastmod || date).toISOString();
+  const publishedAt = new Date(date).toISOString()
+  const modifiedAt = new Date(lastmod || date).toISOString()
   const imagesArr =
     images.length === 0
       ? [siteMetadata.socialBanner]
       : typeof images === 'string'
       ? [images]
-      : images;
+      : images
 
   const featuredImages = imagesArr.map((img) => {
     return {
       '@type': 'ImageObject',
       url: `${siteMetadata.siteUrl}${img}`,
-    };
-  });
+    }
+  })
 
-  let authorList;
+  let authorList
   if (authorDetails) {
     authorList = authorDetails.map((author) => {
       return {
         '@type': 'Person',
         name: author.name,
-      };
-    });
+      }
+    })
   } else {
     authorList = {
       '@type': 'Person',
       name: siteMetadata.author,
-    };
+    }
   }
 
   const structuredData = {
@@ -174,9 +174,9 @@ export const BlogSEO = ({
       },
     },
     description: summary,
-  };
+  }
 
-  const twImageUrl = featuredImages[0].url;
+  const twImageUrl = featuredImages[0].url
 
   return (
     <>
@@ -203,5 +203,5 @@ export const BlogSEO = ({
         />
       </Head>
     </>
-  );
-};
+  )
+}

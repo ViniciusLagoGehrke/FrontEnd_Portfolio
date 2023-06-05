@@ -1,20 +1,46 @@
-import { TagSEO } from '@/components/SEO';
-import siteMetadata from '@/data/siteMetadata';
-import ListLayout from '@/layouts/ListLayout';
-import kebabCase from '@/lib/utils/kebabCase';
-import { getAllTags, allCoreContent } from '@/lib/utils/contentlayer';
-import getRepos, { getReposTags } from '@/lib/utils/getRepos';
-import mergeTagCounts from 'lib/utils/mergeTagCounts';
-import { InferGetStaticPropsType } from 'next';
-import { allBlogs } from 'contentlayer/generated';
+import { TagSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import ListLayout from '@/layouts/ListLayout'
+import kebabCase from '@/lib/utils/kebabCase'
+import { getAllTags, allCoreContent } from '@/lib/utils/contentlayer'
+import { getReposTags } from '@/lib/utils/getReposTags'
+import mergeTagCounts from 'lib/utils/mergeTagCounts'
+import { InferGetStaticPropsType } from 'next'
+import { allBlogs } from 'contentlayer/generated'
+// import { server } from 'lib/config'
+import { Repo } from 'types/Repo'
 
 export async function getStaticPaths() {
-  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
+  // const headers = new Headers({
+  //   Accept: 'application/json',
+  //   'Content-Type': 'application/json',
+  //   'User-Agent': '*',
+  // })
+  // const res = await fetch(`${server}/api/getrepos`, {
+  //   method: 'GET',
+  //   headers: headers,
+  // })
+  // console.log(res)
+  // const repos: Repo[] = await res.json()
+  const repos: Repo[] = [
+    {
+      id: 359735105,
+      name: 'PWA_Weather',
+      owner: {
+        html_url: 'https://github.com/ViniciusLagoGehrke',
+      },
+      html_url: 'https://github.com/ViniciusLagoGehrke/PWA_Weather',
+      description:
+        'Progressive Web Weather App using React and Open Weather Map API',
+      homepage: 'https://pwa-weather-viniciuslagogehrke.vercel.app/',
+      topics: ['api-rest', 'pwa', 'react'],
+    },
+  ]
 
-  const blogTags = await getAllTags(allBlogs);
-  const repoTags = await getReposTags(repos);
+  const blogTags = await getAllTags(allBlogs)
+  const repoTags = await getReposTags(repos)
 
-  const tags = mergeTagCounts(blogTags, repoTags);
+  const tags = mergeTagCounts(blogTags, repoTags)
 
   return {
     paths: Object.keys(tags).map((tag) => ({
@@ -23,26 +49,51 @@ export async function getStaticPaths() {
       },
     })),
     fallback: false,
-  };
+  }
 }
 
 export const getStaticProps = async (context) => {
-  const repos = (await getRepos(siteMetadata.githubRepos)) ?? [];
-  const tag = context.params.tag as string;
+  // const headers = new Headers({
+  //   Accept: 'application/json',
+  //   'Content-Type': 'application/json',
+  //   'User-Agent': '*',
+  // })
+  // const res = await fetch(`${server}/api/getrepos`, {
+  //   method: 'GET',
+  //   headers: headers,
+  // })
+  // console.log(res)
+  // const repos: Repo[] = await res.json()
+  const repos: Repo[] = [
+    {
+      id: 359735105,
+      name: 'PWA_Weather',
+      owner: {
+        html_url: 'https://github.com/ViniciusLagoGehrke',
+      },
+      html_url: 'https://github.com/ViniciusLagoGehrke/PWA_Weather',
+      description:
+        'Progressive Web Weather App using React and Open Weather Map API',
+      homepage: 'https://pwa-weather-viniciuslagogehrke.vercel.app/',
+      topics: ['api-rest', 'pwa', 'react'],
+    },
+  ]
+
+  const tag = context.params.tag as string
 
   const filteredPosts = allCoreContent(
     allBlogs?.filter(
       (post) =>
         post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(tag)
     )
-  );
+  )
 
   const filteredRepos = repos?.filter((repo) =>
     repo.topics.map((t) => kebabCase(t)).includes(tag)
-  );
+  )
 
-  return { props: { posts: filteredPosts, repos: filteredRepos, tag } };
-};
+  return { props: { posts: filteredPosts, repos: filteredRepos, tag } }
+}
 
 export default function Tag({
   posts,
@@ -50,7 +101,7 @@ export default function Tag({
   tag,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
+  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (
     <>
       <TagSEO
@@ -59,5 +110,5 @@ export default function Tag({
       />
       <ListLayout posts={posts} repos={repos} title={title} />
     </>
-  );
+  )
 }

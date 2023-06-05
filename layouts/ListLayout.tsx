@@ -1,21 +1,21 @@
-import { ComponentProps, useState } from 'react';
-import Link from '@/components/Link';
-import Tag from '@/components/Tag';
-import Pagination from '@/components/Pagination';
-import RepoList from '@/components/RepoList';
-import formatDate from '@/lib/utils/formatDate';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import siteMetadata from '@/data/siteMetadata';
-import type { Blog } from 'contentlayer/generated';
-import { Repo } from 'types/Repo';
+import { ComponentProps, useState } from 'react'
+import Link from '@/components/Link'
+import Tag from '@/components/Tag'
+import Pagination from '@/components/Pagination'
+import RepoList from '@/components/RepoList'
+import formatDate from '@/lib/utils/formatDate'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import siteMetadata from '@/data/siteMetadata'
+import type { Blog } from 'contentlayer/generated'
+import { Repo } from 'types/Repo'
 
 interface Props {
-  posts?: CoreContent<Blog>[];
-  repos?: Repo[];
-  title: string;
-  initialDisplayPosts?: CoreContent<Blog>[];
-  initialDisplayRepos?: Repo[];
-  pagination?: ComponentProps<typeof Pagination>;
+  posts?: CoreContent<Blog>[]
+  repos?: Repo[]
+  title: string
+  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayRepos?: Repo[]
+  pagination?: ComponentProps<typeof Pagination>
 }
 
 export default function ListLayout({
@@ -26,26 +26,26 @@ export default function ListLayout({
   initialDisplayRepos = [],
   pagination,
 }: Props) {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags.join(' ');
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
+    const searchContent = post.title + post.summary + post.tags.join(' ')
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
   const filteredRepos = repos?.filter((repo) => {
-    const searchContent = repo.name + repo.description + repo.topics.join(' ');
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
+    const searchContent = repo.name + repo.description + repo.topics.join(' ')
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
 
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue
       ? initialDisplayPosts
-      : filteredBlogPosts;
+      : filteredBlogPosts
 
   const displayRepos =
     initialDisplayRepos.length > 0 && !searchValue
       ? initialDisplayRepos
-      : filteredRepos;
+      : filteredRepos
 
   const renderProjects = () => (
     <div>
@@ -58,7 +58,7 @@ export default function ListLayout({
         <RepoList repos={displayRepos} userName={siteMetadata.userName} />
       )}
     </div>
-  );
+  )
 
   return (
     <>
@@ -98,7 +98,7 @@ export default function ListLayout({
           <ul>
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((post) => {
-              const { slug, date, title, summary, tags } = post;
+              const { slug, date, title, summary, tags } = post
               return (
                 <li key={slug} className="py-4">
                   <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
@@ -130,7 +130,7 @@ export default function ListLayout({
                     </div>
                   </article>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
@@ -143,5 +143,5 @@ export default function ListLayout({
         />
       )}
     </>
-  );
+  )
 }

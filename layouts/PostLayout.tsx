@@ -1,28 +1,28 @@
-import Link from '@/components/Link';
-import PageTitle from '@/components/PageTitle';
-import SectionContainer from '@/components/SectionContainer';
-import { BlogSEO } from '@/components/SEO';
-import Image from '@/components/Image';
-import Tag from '@/components/Tag';
-import siteMetadata from '@/data/siteMetadata';
-import ScrollTopAndComment from '@/components/ScrollTopAndComment';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import { ReactNode } from 'react';
-import type { Blog, Authors } from 'contentlayer/generated';
+import Link from '@/components/Link'
+import PageTitle from '@/components/PageTitle'
+import SectionContainer from '@/components/SectionContainer'
+import { BlogSEO } from '@/components/SEO'
+import Image from '@/components/Image'
+import Tag from '@/components/Tag'
+import siteMetadata from '@/data/siteMetadata'
+import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import { ReactNode } from 'react'
+import type { Blog, Authors } from 'contentlayer/generated'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-};
+}
 
 interface Props {
-  content: CoreContent<Blog>;
-  authorDetails: CoreContent<Authors>[];
-  next?: { slug: string; title: string };
-  prev?: { slug: string; title: string };
-  children: ReactNode;
+  content: CoreContent<Blog>
+  authorDetails: CoreContent<Authors>[]
+  next?: { slug: string; title: string }
+  prev?: { slug: string; title: string }
+  children: ReactNode
 }
 
 export default function PostLayout({
@@ -32,7 +32,7 @@ export default function PostLayout({
   prev,
   children,
 }: Props) {
-  const { slug, date, title, tags } = content;
+  const { slug, date, title, tags } = content
 
   return (
     <SectionContainer>
@@ -168,5 +168,5 @@ export default function PostLayout({
         </div>
       </article>
     </SectionContainer>
-  );
+  )
 }
