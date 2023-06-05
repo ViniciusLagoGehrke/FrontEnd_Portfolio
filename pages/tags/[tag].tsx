@@ -20,7 +20,7 @@ export async function getStaticPaths() {
     method: 'GET',
     headers: headers,
   })
-  console.log(res)
+
   const repos: Repo[] = await res.json()
 
   const blogTags = await getAllTags(allBlogs)
@@ -48,7 +48,7 @@ export const getStaticProps = async (context) => {
     method: 'GET',
     headers: headers,
   })
-  console.log(res)
+
   const repos: Repo[] = await res.json()
 
   const tag = context.params.tag as string

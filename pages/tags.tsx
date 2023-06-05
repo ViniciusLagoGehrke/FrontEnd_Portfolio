@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<{
     method: 'GET',
     headers: headers,
   })
-  console.log(res)
+
   const repos: Repo[] = await res.json()
 
   const blogTags = await getAllTags(allBlogs)
