@@ -53,11 +53,11 @@ const Card = ({ title, description, imgSrc, href, tags, code }: CardProps) => (
         </h2>
 
         {tags && (
-          <div className="mb-1 flex flex-wrap gap-2">
+          <div className="mb-1 flex flex-wrap gap-1">
             {tags.map((tag) => (
               <Tag
-                className="m-0 rounded-md bg-gray-200 px-2 py-0.5 font-mono text-xs text-primary-900 dark:bg-gray-800 dark:text-primary-200"
                 key={tag}
+                className="rounded-md bg-gray-200 px-2 py-0.5 font-mono text-xs text-primary-900 hover:text-primary-700 dark:bg-gray-800 dark:text-primary-200 dark:hover:text-primary-400"
                 text={tag}
               />
             ))}
