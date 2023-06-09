@@ -76,7 +76,9 @@ docker run -it --name vite_docker -p 8000:8000 --mount type=bind,source=$(pwd),t
 
 The `-it` flags are used to keep STDIN open and to allocate a pseudo-tty respectvelly. This enables to access the terminal inside the container when it's running.
 Next we name the container with `--name`, in this case *vite_docker*.
+
 We also pass `-p` to set the ports as *host:app*. The first one is where the container will be opened and the second is for the application.
+
 Followed by `--mount` that will associate the files on our project to the directory inside the container. This allows us to modify the code and see the results instantly.
 
 ### Install Dependencies and run the app
