@@ -6,18 +6,18 @@ draft: false
 summary: How did I containerize a Vite React application with Docker?
 ---
 
-In a take-home tech challenge, I was asked to develop a webapp and one of the prerequisites was that they might not know which version of Node I was using.
+In a take-home tech challenge, I was asked to develop a webapp and one of the prerequisites was that they could run and test the webapp even without knowing which version of Node it was used.
 My solution at that point was straighforward: I described the version in the README.md file. 😅
 Although that's not a bad answer, the interviewer was aiming at another point...
 
-## CONTAINERS!
+## CONTAINERS
 
 I already had some experience running database containers from Docker Hub, but had not yet done this for a front-end code. Is not big of a deal after all, so let's see how it works.
 
 ### First things first - Project Setup
 
-Since this project uses [Vite](https://vitejs.dev/) we have to add some settings inside the *vite.config.js* file. You can skip this step if not using it.
-The *react* and *tsconfigPaths* should be already there if is a React Typescript app.
+Since this project uses [Vite](https://vitejs.dev/) we have to add some settings inside the _vite.config.js_ file. You can skip this step if not using it.
+The _react_ and _tsconfigPaths_ should be already there if is a React Typescript app.
 
 ```js
 import { defineConfig } from 'vitest/config'
@@ -32,13 +32,13 @@ export default defineConfig({
     port: 8000, // This is the port which we will use in docker
     watch: {
       // when using windows and hot reload doesn't work
-      usePolling: true
-    }
-  }
+      usePolling: true,
+    },
+  },
 })
 ```
 
-Then add a *.dockerignore* file to the root of your project (next to *package.json*). This works similar to *.gitignore*, which will prevent docker from copying anything that is mentioned there. This is how it should be:
+Then add a _.dockerignore_ file to the root of your project (next to _package.json_). This works similar to _.gitignore_, which will prevent docker from copying anything that is mentioned there. This is how it should be:
 
 ```
 node_modules
@@ -64,7 +64,7 @@ Now, open your terminal and type this command
 docker build -t vite-image .
 ```
 
-You can notice that we pass the flag `-t`, which stands for *tag* or the name of this image that we supply right after, in this case, *vite-image*.
+You can notice that we pass the flag `-t`, which stands for _tag_ or the name of this image that we supply right after, in this case, _vite-image_.
 
 ### Create a container from this image
 
@@ -75,9 +75,9 @@ docker run -it --name vite_docker -p 8000:8000 --mount type=bind,source=$(pwd),t
 ```
 
 The `-it` flags are used to keep STDIN open and to allocate a pseudo-tty respectvelly. This enables to access the terminal inside the container when it's running.
-Next we name the container with `--name`, in this case *vite_docker*.
+Next we name the container with `--name`, in this case _vite_docker_.
 
-We also pass `-p` to set the ports as *host:app*. The first one is where the container will be opened and the second is for the application.
+We also pass `-p` to set the ports as _host:app_. The first one is where the container will be opened and the second is for the application.
 
 Followed by `--mount` that will associate the files on our project to the directory inside the container. This allows us to modify the code and see the results instantly.
 
@@ -89,10 +89,11 @@ Upon completion, it will open the terminal inside the container and you can run 
 yarn && yarn dev
 ```
 
-You can access the output at http://localhost:8000/
+You can access the output at <http://localhost:8000/>
 Whenever you modify the code it will update in the browser. 🥳
 
 ### Last Notes
 
 It is important to understand that this container ensures that all developers have the same environment on their computers and can run the application without installing any node_modules.
 This container is not valid for production deployment.
+
