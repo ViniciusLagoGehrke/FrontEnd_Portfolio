@@ -18,19 +18,7 @@ module.exports = {
     'next/core-web-vitals',
   ],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        noConsole: ['error', { allow: ['warn', 'error'] }],
-        endOfLine: 'auto',
-        printWidth: 80,
-        singleQuote: true,
-        semi: false,
-        trailingComma: 'es5',
-        tabWidth: 2,
-        useTabs: false,
-      },
-    ],
+    'prettier/prettier': ['error'],
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',

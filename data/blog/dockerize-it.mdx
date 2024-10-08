@@ -16,8 +16,8 @@ I already had some experience running database containers from Docker Hub, but h
 
 ### First things first - Project Setup
 
-Since this project uses [Vite](https://vitejs.dev/) we have to add some settings inside the *vite.config.js* file. You can skip this step if not using it.
-The *react* and *tsconfigPaths* should be already there if is a React Typescript app.
+Since this project uses [Vite](https://vitejs.dev/) we have to add some settings inside the _vite.config.js_ file. You can skip this step if not using it.
+The _react_ and _tsconfigPaths_ should be already there if is a React Typescript app.
 
 ```js
 import { defineConfig } from 'vitest/config'
@@ -32,13 +32,13 @@ export default defineConfig({
     port: 8000, // This is the port which we will use in docker
     watch: {
       // when using windows and hot reload doesn't work
-      usePolling: true
-    }
-  }
+      usePolling: true,
+    },
+  },
 })
 ```
 
-Then add a *.dockerignore* file to the root of your project (next to *package.json*). This works similar to *.gitignore*, which will prevent docker from copying anything that is mentioned there. This is how it should be:
+Then add a _.dockerignore_ file to the root of your project (next to _package.json_). This works similar to _.gitignore_, which will prevent docker from copying anything that is mentioned there. This is how it should be:
 
 ```
 node_modules
@@ -64,7 +64,7 @@ Now, open your terminal and type this command
 docker build -t vite-image .
 ```
 
-You can notice that we pass the flag `-t`, which stands for *tag* or the name of this image that we supply right after, in this case, *vite-image*.
+You can notice that we pass the flag `-t`, which stands for _tag_ or the name of this image that we supply right after, in this case, _vite-image_.
 
 ### Create a container from this image
 
@@ -75,9 +75,9 @@ docker run -it --name vite_docker -p 8000:8000 --mount type=bind,source=$(pwd),t
 ```
 
 The `-it` flags are used to keep STDIN open and to allocate a pseudo-tty respectvelly. This enables to access the terminal inside the container when it's running.
-Next we name the container with `--name`, in this case *vite_docker*.
+Next we name the container with `--name`, in this case _vite_docker_.
 
-We also pass `-p` to set the ports as *host:app*. The first one is where the container will be opened and the second is for the application.
+We also pass `-p` to set the ports as _host:app_. The first one is where the container will be opened and the second is for the application.
 
 Followed by `--mount` that will associate the files on our project to the directory inside the container. This allows us to modify the code and see the results instantly.
 

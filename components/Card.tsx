@@ -12,10 +12,7 @@ type CardProps = {
 }
 
 const Card = ({ title, description, imgSrc, href, tags, code }: CardProps) => (
-  <li
-    className="min-w-80 min-h-96 h-full max-w-xs p-4 "
-    style={{ maxWidth: '544px' }}
-  >
+  <li className="min-w-80 min-h-96 h-full max-w-xs p-4 " style={{ maxWidth: '544px' }}>
     <div
       className={`${
         imgSrc && 'h-full'
@@ -64,9 +61,7 @@ const Card = ({ title, description, imgSrc, href, tags, code }: CardProps) => (
           </div>
         )}
 
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">
-          {description}
-        </p>
+        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
         {code && (
           <Link
             href={code}
